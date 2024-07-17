@@ -1,11 +1,25 @@
-import React from 'react';
-import {View, Text} from 'react-native';
+import React, {useEffect} from 'react';
+import SplashScreen from 'react-native-splash-screen';
+import AppNavigator from './App/Router/AppNavigator';
+import {Provider, useDispatch} from 'react-redux';
+// import {configureStore} from '@reduxjs/toolkit';
+// import rootReducer from './App/Redux/Reducers/index.js';
+// import {loadFavorites} from './App/Redux/Reducers/Favorites.js';
+
+// const store = configureStore({
+//   reducer: rootReducer,
+// });
 
 const App = () => {
+  // useEffect(() => {
+  //   SplashScreen.hide();
+  //   store.dispatch(loadFavorites());
+  // }, []);
+
   return (
-    <View>
-      <Text>INI APP JS</Text>
-    </View>
+    // <Provider store={store}>
+    <AppNavigator />
+    // </Provider>
   );
 };
 
