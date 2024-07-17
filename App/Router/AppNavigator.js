@@ -8,8 +8,8 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
-import LoginPage from '../Containers/LoginPage';
-import HomePage from '../Containers/HomePage';
+import LoginPage from '../Screens/LoginPage';
+import HomePage from '../Screens/HomePage';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
