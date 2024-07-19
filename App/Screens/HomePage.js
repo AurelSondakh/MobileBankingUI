@@ -21,17 +21,12 @@ import PaymentHistoryData from '../Data/PaymentHistoryData';
 
 // Components
 import Container from '../Components/Container';
+import UserBalanceComponent from '../Components/UserBalanceComponent';
 
 const width = Dimensions.get('screen').width;
 
 const HomePage = () => {
-  const [showMoney, setShowMoney] = useState(true);
   const navigation = useNavigation()
-
-  const handleToggleShowMoney = () => {
-    if (showMoney) setShowMoney(false);
-    else setShowMoney(true);
-  };
 
   const cardListComponent = ({item}) => {
     let imageSource = item.cardImage;
@@ -98,27 +93,7 @@ const HomePage = () => {
             <MaterialIcons name={'search'} color={'#FFF'} size={28} />
           </TouchableOpacity>
         </View>
-        <View style={styles.totalAmountContainer}>
-          <View style={styles.availableMoneyContainer}>
-            <Text style={styles.regularText}>Total Available Money</Text>
-            <Text style={styles.amountText}>
-              {showMoney ? '$ 7,483.54' : '******'}
-            </Text>
-          </View>
-          <TouchableOpacity
-            onPress={handleToggleShowMoney}
-            style={styles.hideBalanceContainer}>
-            <FontAwesome
-              style={{marginRight: 10}}
-              name={showMoney ? 'eye-slash' : 'eye'}
-              color={'#FFF'}
-              size={24}
-            />
-            <Text style={styles.regularText}>
-              {showMoney ? 'Hide' : 'Show'} Balance
-            </Text>
-          </TouchableOpacity>
-        </View>
+        <UserBalanceComponent />
         <View>
           <FlatList
             horizontal={true}
@@ -176,17 +151,6 @@ const styles = StyleSheet.create({
   },
   scanNotifButton: {
     marginRight: 20,
-  },
-  totalAmountContainer: {
-    paddingHorizontal: 10,
-    flexDirection: 'row',
-    marginTop: 35,
-    justifyContent: 'space-between',
-  },
-  availableMoneyContainer: {},
-  hideBalanceContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
   },
   regularText: {
     color: '#FFF',
