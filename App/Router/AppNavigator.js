@@ -10,6 +10,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import LoginPage from '../Screens/LoginPage';
 import HomePage from '../Screens/HomePage';
+import PaymentHistoryPage from '../Screens/PaymentHistoryPage';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -196,6 +197,11 @@ const AppNavigator = () => {
         <Stack.Screen
           name="LoginPage"
           component={LoginPage}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="PaymentHistoryPage"
+          component={PaymentHistoryPage}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

@@ -13,14 +13,20 @@ import {
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Entypo from 'react-native-vector-icons/Entypo';
+import { useNavigation } from '@react-navigation/native';
+
+// DATA
 import CardData from '../Data/CardData';
 import PaymentHistoryData from '../Data/PaymentHistoryData';
+
+// Components
 import Container from '../Components/Container';
 
 const width = Dimensions.get('screen').width;
 
 const HomePage = () => {
   const [showMoney, setShowMoney] = useState(true);
+  const navigation = useNavigation()
 
   const handleToggleShowMoney = () => {
     if (showMoney) setShowMoney(false);
@@ -80,7 +86,7 @@ const HomePage = () => {
   return (
     <View style={styles.homeContainer}>
       <Container />
-      <ScrollView>
+      <ScrollView style={styles.scrollContainer}>
         <View style={styles.headerContainer}>
           <TouchableOpacity style={styles.scanQrButton}>
             <MaterialIcons name={'qr-code-scanner'} color={'#FFF'} size={28} />
@@ -135,7 +141,9 @@ const HomePage = () => {
         <View style={styles.paymentHistoryContainer}>
           <View style={styles.paymentHistoryHeader}>
             <Text style={styles.paymentHistoryTitle}>Payment History</Text>
-            <MaterialIcons name={'chevron-right'} color={'#FFF'} size={32} />
+            <TouchableOpacity onPress={() => navigation.navigate('PaymentHistoryPage')}>
+              <MaterialIcons name={'chevron-right'} color={'#FFF'} size={32} />
+            </TouchableOpacity>
           </View>
           <View>
             <FlatList
@@ -154,8 +162,10 @@ const styles = StyleSheet.create({
   homeContainer: {
     flex: 1,
     backgroundColor: '#070A0E',
-    paddingTop: 60,
-    paddingHorizontal: 10,
+    paddingTop: 60
+  },
+  scrollContainer: {
+    paddingHorizontal: 10
   },
   headerContainer: {
     paddingHorizontal: 10,
