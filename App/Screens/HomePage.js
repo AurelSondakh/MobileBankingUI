@@ -13,19 +13,20 @@ import {
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Entypo from 'react-native-vector-icons/Entypo';
+import { useNavigation } from '@react-navigation/native';
+
+// DATA
 import CardData from '../Data/CardData';
 import PaymentHistoryData from '../Data/PaymentHistoryData';
+
+// Components
 import Container from '../Components/Container';
+import UserBalanceComponent from '../Components/UserBalanceComponent';
 
 const width = Dimensions.get('screen').width;
 
 const HomePage = () => {
-  const [showMoney, setShowMoney] = useState(true);
-
-  const handleToggleShowMoney = () => {
-    if (showMoney) setShowMoney(false);
-    else setShowMoney(true);
-  };
+  const navigation = useNavigation()
 
   const cardListComponent = ({item}) => {
     let imageSource = item.cardImage;
@@ -80,39 +81,8 @@ const HomePage = () => {
   return (
     <View style={styles.homeContainer}>
       <Container />
-      <ScrollView>
-        <View style={styles.headerContainer}>
-          <TouchableOpacity style={styles.scanQrButton}>
-            <MaterialIcons name={'qr-code-scanner'} color={'#FFF'} size={28} />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.scanNotifButton}>
-            <MaterialIcons name={'notifications'} color={'#FFF'} size={28} />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <MaterialIcons name={'search'} color={'#FFF'} size={28} />
-          </TouchableOpacity>
-        </View>
-        <View style={styles.totalAmountContainer}>
-          <View style={styles.availableMoneyContainer}>
-            <Text style={styles.regularText}>Total Available Money</Text>
-            <Text style={styles.amountText}>
-              {showMoney ? '$ 7,483.54' : '******'}
-            </Text>
-          </View>
-          <TouchableOpacity
-            onPress={handleToggleShowMoney}
-            style={styles.hideBalanceContainer}>
-            <FontAwesome
-              style={{marginRight: 10}}
-              name={showMoney ? 'eye-slash' : 'eye'}
-              color={'#FFF'}
-              size={24}
-            />
-            <Text style={styles.regularText}>
-              {showMoney ? 'Hide' : 'Show'} Balance
-            </Text>
-          </TouchableOpacity>
-        </View>
+      <ScrollView style={styles.scrollContainer}>
+        <UserBalanceComponent />
         <View>
           <FlatList
             horizontal={true}
@@ -135,10 +105,13 @@ const HomePage = () => {
         <View style={styles.paymentHistoryContainer}>
           <View style={styles.paymentHistoryHeader}>
             <Text style={styles.paymentHistoryTitle}>Payment History</Text>
-            <MaterialIcons name={'chevron-right'} color={'#FFF'} size={32} />
+            <TouchableOpacity onPress={() => navigation.navigate('PaymentHistoryPage')}>
+              <MaterialIcons name={'chevron-right'} color={'#FFF'} size={32} />
+            </TouchableOpacity>
           </View>
           <View>
             <FlatList
+              nestedScrollEnabled={true}
               data={PaymentHistoryData}
               renderItem={(item, index) => paymentListComponent(item)}
               keyExtractor={item => item?.paymentId}
@@ -154,8 +127,10 @@ const styles = StyleSheet.create({
   homeContainer: {
     flex: 1,
     backgroundColor: '#070A0E',
-    paddingTop: 60,
-    paddingHorizontal: 10,
+    paddingTop: 60
+  },
+  scrollContainer: {
+    paddingHorizontal: 10
   },
   headerContainer: {
     paddingHorizontal: 10,
@@ -166,17 +141,6 @@ const styles = StyleSheet.create({
   },
   scanNotifButton: {
     marginRight: 20,
-  },
-  totalAmountContainer: {
-    paddingHorizontal: 10,
-    flexDirection: 'row',
-    marginTop: 35,
-    justifyContent: 'space-between',
-  },
-  availableMoneyContainer: {},
-  hideBalanceContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
   },
   regularText: {
     color: '#FFF',

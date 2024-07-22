@@ -10,6 +10,10 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import LoginPage from '../Screens/LoginPage';
 import HomePage from '../Screens/HomePage';
+import PaymentsPage from '../Screens/PaymentsPage';
+import PaymentHistoryPage from '../Screens/PaymentHistoryPage';
+import SendTransferPage from '../Screens/SendTransferPage';
+import AddNewBenefictaryPage from '../Screens/AddNewBenefictaryPage';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -64,7 +68,7 @@ const AppNavigator = () => {
           />
           <Tab.Screen
             name="Payments"
-            component={HomePage}
+            component={PaymentsPage}
             options={{
               tabBarIcon: ({focused}) => {
                 const colorFocused = focused ? '#E9C749' : '#757D80';
@@ -93,7 +97,7 @@ const AppNavigator = () => {
           />
           <Tab.Screen
             name="Send"
-            component={HomePage}
+            component={SendTransferPage}
             options={{
               tabBarIcon: ({focused}) => {
                 const colorFocused = focused ? '#E9C749' : '#757D80';
@@ -196,6 +200,16 @@ const AppNavigator = () => {
         <Stack.Screen
           name="LoginPage"
           component={LoginPage}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="PaymentHistoryPage"
+          component={PaymentHistoryPage}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="AddNewBenefictaryPage"
+          component={AddNewBenefictaryPage}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
