@@ -188,7 +188,7 @@ const PaymentsPage = () => {
     let bannerSource = item.recommendationBanner;
     let logoSource = item.recommendationCompanyLogo;
     return (
-      <View style={styles.recommendationListContainer}>
+      <TouchableOpacity style={styles.recommendationListContainer}>
         <Image style={styles.banner} source={bannerSource} resizeMode="cover" />
         <View style={styles.recommendationTextContainer}>
           <Text style={styles.recommendationCategory}>
@@ -199,7 +199,7 @@ const PaymentsPage = () => {
           </Text>
         </View>
         <Image style={styles.logo} source={logoSource} resizeMode='contain' />
-      </View>
+      </TouchableOpacity>
     );
   };
 
@@ -207,17 +207,6 @@ const PaymentsPage = () => {
     <View style={styles.paymentPageContainer}>
       <Container />
       <ScrollView style={styles.scrollContainer}>
-        <View style={styles.headerContainer}>
-          <TouchableOpacity style={styles.scanQrButton}>
-            <MaterialIcons name={'qr-code-scanner'} color={'#FFF'} size={28} />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.scanNotifButton}>
-            <MaterialIcons name={'notifications'} color={'#FFF'} size={28} />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <MaterialIcons name={'search'} color={'#FFF'} size={28} />
-          </TouchableOpacity>
-        </View>
         <View style={styles.userBalanceContainer}>
           <UserBalanceComponent />
         </View>
@@ -271,16 +260,6 @@ const styles = StyleSheet.create({
   },
   userBalanceContainer: {
     paddingHorizontal: 10,
-  },
-  headerContainer: {
-    paddingHorizontal: 20,
-    flexDirection: 'row',
-  },
-  scanQrButton: {
-    flex: 1,
-  },
-  scanNotifButton: {
-    marginRight: 20,
   },
   menuContainer: {
     backgroundColor: '#0E1419',

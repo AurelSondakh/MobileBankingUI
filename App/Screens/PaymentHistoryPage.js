@@ -8,6 +8,7 @@ import {
   Dimensions,
   TextInput,
   TouchableOpacity,
+  FlatList
 } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {useNavigation} from '@react-navigation/native';
@@ -15,8 +16,9 @@ import {useNavigation} from '@react-navigation/native';
 // Components
 import Container from '../Components/Container';
 import HeaderComponent from '../Components/HeaderComponent';
-import {FlatList} from 'react-native-gesture-handler';
+import SearchBarComponent from '../Components/SearchBarComponent';
 
+// Data
 import PaymentHistoryData from '../Data/PaymentHistoryData';
 
 const width = Dimensions.get('screen').width;
@@ -64,13 +66,8 @@ const PaymentHistoryPage = () => {
       <Container />
       <View style={styles.scrollContainer}>
         <HeaderComponent title={'Payment History'} />
-        <View style={styles.searchBarContainer}>
-          <MaterialIcons name={'search'} color={'#FFF'} size={24} />
-          <TextInput
-            placeholder="Search by product name"
-            placeholderTextColor={'#FFF'}
-            style={styles.searchBarInput}
-          />
+        <View style={styles.searchBarComponent}>
+          <SearchBarComponent placeholderText={'Search by product name'} />
         </View>
         <View style={styles.expencesContainer}>
           <View style={styles.expencesMonthContainer}>
@@ -111,19 +108,8 @@ const styles = StyleSheet.create({
   scrollContainer: {
     paddingHorizontal: 10,
   },
-  searchBarContainer: {
-    marginTop: 25,
-    borderWidth: 1,
-    borderColor: '#FFF',
-    borderRadius: 15,
-    paddingHorizontal: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  searchBarInput: {
-    color: '#FFF',
-    fontFamily: 'Poppins-Medium',
-    flex: 1,
+  searchBarComponent: {
+    marginTop: 25
   },
   regularText: {
     color: '#FFF',

@@ -23,18 +23,18 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10
     },
     iconContainer: {
-        width: width / 6,
-        height: width / 6,
-        borderRadius: width / 2,
+        width: 65,
+        height: 65,
+        borderRadius: 32.5,
         alignItems: 'center',
         justifyContent: 'center'
     },
     title: {
         color: '#D4D6CF',
         fontFamily: 'Poppins-Regular',
-        width: width / 6,
+        width: 65,
         textAlign: 'center',
-        fontSize: 12,
+        fontSize: 11,
         marginTop: 8
     }
 })
