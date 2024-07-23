@@ -111,7 +111,6 @@ const HomePage = () => {
           </View>
           <View>
             <FlatList
-              nestedScrollEnabled={true}
               data={PaymentHistoryData}
               renderItem={(item, index) => paymentListComponent(item)}
               keyExtractor={item => item?.paymentId}

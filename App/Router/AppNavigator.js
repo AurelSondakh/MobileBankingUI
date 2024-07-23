@@ -13,7 +13,7 @@ import HomePage from '../Screens/HomePage';
 import PaymentsPage from '../Screens/PaymentsPage';
 import PaymentHistoryPage from '../Screens/PaymentHistoryPage';
 import SendTransferPage from '../Screens/SendTransferPage';
-import AddNewBenefictaryPage from '../Screens/AddNewBenefictaryPage';
+import AddNewBeneficiaryPage from '../Screens/AddNewBeneficiaryPage';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -208,8 +208,8 @@ const AppNavigator = () => {
           options={{headerShown: false}}
         />
         <Stack.Screen
-          name="AddNewBenefictaryPage"
-          component={AddNewBenefictaryPage}
+          name="AddNewBeneficiaryPage"
+          component={AddNewBeneficiaryPage}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

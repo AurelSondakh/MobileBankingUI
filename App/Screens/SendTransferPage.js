@@ -2,6 +2,7 @@
 import React from 'react';
 import {View, Text, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
 // Components
 import Container from '../Components/Container';
@@ -48,19 +49,17 @@ const SendTransferPage = () => {
       <View style={styles.savedUserContainer}>
         <View style={styles.savedUserHeader}>
           <Text style={styles.savedUserTitle}>Benefictary List</Text>
-          <TouchableOpacity onPress={() => navigation.navigate('AddNewBenefictaryPage')}>
-            <Text
-              style={[
-                styles.savedUserTitle,
-                {textDecorationLine: 'underline'},
-              ]}>
-              Add New User
-            </Text>
-          </TouchableOpacity>
         </View>
         <View style={styles.searchBarComponent}>
           <SearchBarComponent placeholderText={'Search by name or bank'} />
         </View>
+        <TouchableOpacity
+          style={styles.addNewBeneficiaryContainer}
+          onPress={() => navigation.navigate('AddNewBeneficiaryPage')}>
+          <MaterialIcons name={'perm-contact-calendar'} size={24} color={'#030A04'} />
+          <Text style={styles.newBeneficiaryText}>Add New Beneficiary</Text>
+          <MaterialIcons name={'chevron-right'} size={24} color={'#030A04'} />
+        </TouchableOpacity>
         <View style={styles.savedUserListContainer}>
           <FlatList
             data={SavedUserTransferData}
@@ -100,6 +99,21 @@ const styles = StyleSheet.create({
   searchBarComponent: {
     marginTop: 15,
   },
+  addNewBeneficiaryContainer: {
+    marginTop: 15,
+    padding: 10,
+    backgroundColor: '#E9C749',
+    borderRadius: 10,
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  newBeneficiaryText: {
+    fontFamily: 'Poppins-SemiBold',
+    fontSize: 12,
+    color: '#030A04',
+    flex: 1,
+    marginLeft: 10
+  },
   savedUserListContainer: {
     marginTop: 20,
     borderTopWidth: 1,
@@ -117,14 +131,14 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 25,
-    backgroundColor: '#007AFF',
+    backgroundColor: '#E9C749',
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 20,
   },
   avatarText: {
     fontSize: 20,
-    color: '#fff',
+    color: '#030A04',
   },
   userListUsername: {
     fontFamily: 'Poppins-SemiBold',
